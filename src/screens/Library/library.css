@@ -1,0 +1,26 @@
+.library-body {
+    width: 94%;
+    height: 94%;
+    padding: 3%;
+    display: flex;
+    flex-wrap: wrap;
+    overflow-y: auto;
+    justify-content: space-between;
+}
+
+.playListCard {
+    width: 15%;
+    height: 35%;
+    border-radius: 20px;
+    background-color: #1e2a3e;
+    border: 1px solid rgba(54, 69, 98, 0.18);
+    padding: 14px;
+    margin-bottom: 2%;
+    background: rgb(30, 42, 62);
+    background: linear-gradient(75deg, rgb(40, 58, 88) 0%, rgba(54, 69, 98, 0) 100%);
+}
+
+.playListImage {
+    width: 100%;
+    border-radius: 12px;
+}
