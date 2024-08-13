@@ -18,6 +18,19 @@
     margin-bottom: 2%;
     background: rgb(30, 42, 62);
     background: linear-gradient(75deg, rgb(40, 58, 88) 0%, rgba(54, 69, 98, 0) 100%);
+    transition: all 0.2s ease;
+
+    .playListName{
+        font-weight: 600;
+    }
+    
+    p {
+        color: white;
+    }
+}
+
+.playListCard:hover {
+    transform: scale(1.02);
 }
 
 .playListImage {

@@ -1,6 +1,9 @@
 import React, { useEffect, useState } from "react";
 import APIKit from "../../spotify";
-import "./library.css";
+import styles from "./Library.module.scss";
+import classNames from "classnames/bind";
+
+const cx = classNames.bind(styles);
 
 export default function Library() {
     const [playLists, setPlayLists] = useState(null);
@@ -14,11 +17,11 @@ export default function Library() {
     console.log(playLists);
     return (
         <div className="screen-container">
-            <div className="library-body">
+            <div className={cx("library-body")}>
                 {playLists?.map((playlist) => (
-                    <div key={playlist.id} className="playListCard">
-                        <img src={playlist.images[0].url} className="playListImage"></img>
-                        <p className="playListName">{playlist.name}</p>
+                    <div key={playlist.id} className={cx("playListCard")}>
+                        <img src={playlist.images[0].url} className={cx("playListImage")}></img>
+                        <p className={cx("playListName")}>{playlist.name}</p>
                         <p>{playlist.tracks.total} Bài hát</p>
                     </div>
                 ))}

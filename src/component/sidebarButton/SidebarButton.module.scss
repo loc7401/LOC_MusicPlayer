@@ -13,10 +13,10 @@ a {
     flex-direction: column;
     margin: 5px auto;
     transition: all 0.3s ease;
-}
 
-.btn-body:hover {
-    color: #fff;
+    &:hover {
+        color: #fff;
+    }
 }
 
 .btn-body-active {

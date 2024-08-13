@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import classNames from "classnames/bind";
+import styles from "./Home.module.scss";
 
 import Feed from "../Feed";
 import Library from "../Library";
@@ -7,9 +9,10 @@ import Player from "../Player";
 import Trending from "../Trending";
 import Favorites from "../Favorites";
 import Sidebar from "../../component/Sidebar";
-import "./home.css";
 import Login from "../Auth/login";
 import { setClientToken } from "../../spotify";
+
+const cx = classNames.bind(styles);
 
 export default function Home() {
     const [token, setToken] = useState("");
@@ -33,7 +36,7 @@ export default function Home() {
         <Login />
     ) : (
         <Router>
-            <div className="main-body">
+            <div className={cx("main-body")}>
                 <Sidebar />
                 <Routes>
                     <Route path="/library" element={<Library />}></Route>

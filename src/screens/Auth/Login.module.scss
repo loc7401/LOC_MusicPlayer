@@ -7,6 +7,10 @@
     justify-content: center;
     overflow: hidden;
     flex-direction: column;
+
+    a {
+        text-decoration: none;
+    }
 }
 
 .logo {
@@ -22,8 +26,4 @@
     color: #1f1f1f;
     font-weight: 600;
     margin-top: 20%;
-}
-
-a {
-    text-decoration: none;
 }
