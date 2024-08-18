@@ -18,10 +18,17 @@ export default function Sidebar() {
 
     useEffect(() => {
         apiClient.get("me").then((response) => {
-            console.log(response.data.images[1]);
             setImage(response.data.images[1].url);
         });
     }, []);
+
+    const logOutBtn = () => {
+        localStorage.clear();
+
+        // Tải lại trang
+        window.location.reload();
+        console.log("loc");
+    };
 
     return (
         <div className={cx("sidebar-container")}>
@@ -34,7 +41,8 @@ export default function Sidebar() {
                 <SidebarButton title={"Favorites"} to={"/favorites"} icon={<AiFillHeart />} />
                 <SidebarButton title={"Library"} to={"/library"} icon={<IoLibrary />} />
             </div>
-            <SidebarButton title={"logout"} to={""} icon={<BiLogOut />} />
+            <SidebarButton title={"Logout"} to={"/"} icon={<BiLogOut />} />
+            {/* <button onClick={() => logOutBtn()}>logout</button> */}
         </div>
     );
 }

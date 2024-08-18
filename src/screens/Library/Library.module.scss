@@ -9,6 +9,7 @@
 }
 
 .playListCard {
+   position: relative;
     width: 15%;
     height: 35%;
     border-radius: 20px;
@@ -22,18 +23,45 @@
 
     .playListName{
         font-weight: 600;
+        color: white ;
     }
     
-    p {
-        color: white;
+    .playListSong {
+        color: #c4d0e37c;
+        font-size: 0.9rem;
+    }
+
+    &:hover {
+        transform: scale(1.02);
+        cursor: pointer;
+    }
+
+    &:hover .playlist-fade {
+        opacity: 1;
     }
 }
 
-.playListCard:hover {
-    transform: scale(1.02);
-}
 
-.playListImage {
+.playListImage { 
     width: 100%;
     border-radius: 12px;
 }
+
+.playlist-fade{
+    position: absolute;
+    opacity: 0;
+    right: 0;
+    bottom: 0;
+    width: 84%;
+    height: 24%;
+    border-radius: 20px;
+    background: linear-gradient(180deg, rgba(54,69,98,0) 10%, rgba(54,69,98,1) 100%);
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-end;
+    padding: 8%;
+    transition: all 0.5s ease;
+}
+
+
+
