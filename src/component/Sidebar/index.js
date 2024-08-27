@@ -22,13 +22,13 @@ export default function Sidebar() {
         });
     }, []);
 
-    const logOutBtn = () => {
-        localStorage.clear();
+    // const logOutBtn = () => {
+    //     localStorage.clear();
 
-        // Tải lại trang
-        window.location.reload();
-        console.log("loc");
-    };
+    //     // Tải lại trang
+    //     window.location.reload();
+    //     console.log("loc");
+    // };
 
     return (
         <div className={cx("sidebar-container")}>
