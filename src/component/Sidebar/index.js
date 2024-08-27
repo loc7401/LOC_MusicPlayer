@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import SidebarButton from "../SidebarButton";
+import SidebarButton from "../SidebarBtn";
 import styles from "./Sidebar.module.scss";
 import classNames from "classnames/bind";
 
