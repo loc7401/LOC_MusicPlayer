@@ -55,7 +55,10 @@
         }
 
         &:hover{
-            transform: scale(0.98);
+            transform: scale(0.99);
+            background-color: #28354c3d;
+            margin-bottom: 5px;
+            border-radius: 5px;
         }
     }
 
@@ -65,10 +68,11 @@
     }
 }
 
-.color1{
+.active-track{
     background-color: #28354c3d;
     margin-bottom: 5px;
     border-radius: 5px;
+    color: #ff9800 !important;
 }
 
 

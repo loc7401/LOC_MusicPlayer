@@ -31,16 +31,17 @@ export default function Player() {
         setCurrentTrack(tracks[currentIndex]?.track);
     }, [currentIndex, tracks]);
 
-    useEffect(() => {
-        const savedTracks = localStorage.getItem("tracks");
-        if (savedTracks) {
-            setTracks(JSON.parse(savedTracks));
-        }
-    }, []);
+    // useEffect(() => {
+    //     const savedTracks = localStorage.getItem("tracks");
+    //     if (savedTracks) {
+    //         setTracks(JSON.parse(savedTracks));
+    //     }
+    // }, []);
 
-    useEffect(() => {
-        localStorage.setItem("tracks", JSON.stringify(tracks));
-    }, [tracks]);
+    // useEffect(() => {
+    //     localStorage.setItem("currentTrack", JSON.stringify(currentTrack));
+    //     localStorage.setItem("tracks", JSON.stringify(tracks));
+    // }, [currentTrack, tracks]);
 
     return (
         <div className="screen-container magicpattern d-flex">
@@ -55,7 +56,11 @@ export default function Player() {
             </div>
             <div className={cx("player-body-right")}>
                 <SongCard album={currentTrack?.album} />
-                <Queue tracks={tracks} setCurrentIndex={setCurrentIndex} />
+                <Queue
+                    tracks={tracks}
+                    setCurrentIndex={setCurrentIndex}
+                    currentIndex={currentIndex}
+                />
             </div>
         </div>
     );
