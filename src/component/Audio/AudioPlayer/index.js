@@ -13,6 +13,9 @@ function AudioPlayer({ currentTrack, currentIndex, setCurrentIndex, total }) {
     const [isPlaying, setIsPlaying] = useState(false);
     const [trackProgress, setTrackProgress] = useState(0);
 
+    const [isRandomClick, setIsRandomClick] = useState(false);
+    const [isRepeatClick, setIsRepeatClick] = useState(false);
+
     var audioSrc = total[currentIndex]?.track.preview_url;
 
     const audioRef = useRef(new Audio(total[0]?.track.preview_url));
@@ -24,6 +27,8 @@ function AudioPlayer({ currentTrack, currentIndex, setCurrentIndex, total }) {
     const { duration } = audioRef.current;
 
     const currentPercent = duration ? (trackProgress / duration) * 100 : 0;
+
+    const randomIndex = Math.floor(Math.random() * total.length);
 
     const startTimer = () => {
         clearInterval(intervalRef.current);
@@ -38,13 +43,23 @@ function AudioPlayer({ currentTrack, currentIndex, setCurrentIndex, total }) {
     };
 
     useEffect(() => {
-        if (isPlaying && audioRef.current) {
-            audioRef.current = new Audio(audioSrc);
-            audioRef.current.play();
-            startTimer();
+        if (audioRef.current.src) {
+            if (isPlaying) {
+                audioRef.current.play();
+                startTimer();
+            } else {
+                clearInterval(intervalRef.current);
+                audioRef.current.pause();
+            }
         } else {
-            clearInterval(intervalRef.current);
-            audioRef.current.pause();
+            if (isPlaying) {
+                audioRef.current = new Audio(audioSrc);
+                audioRef.current.play();
+                startTimer();
+            } else {
+                clearInterval(intervalRef.current);
+                audioRef.current.pause();
+            }
         }
     }, [isPlaying]);
 
@@ -72,7 +87,15 @@ function AudioPlayer({ currentTrack, currentIndex, setCurrentIndex, total }) {
 
     const handleNext = () => {
         if (currentIndex < total.length - 1) {
-            setCurrentIndex(currentIndex + 1);
+            if (isRepeatClick) {
+                audioRef.current.pause();
+                audioRef.current = new Audio(audioSrc);
+                audioRef.current.play();
+            } else if (isRandomClick) {
+                setCurrentIndex(randomIndex);
+            } else {
+                setCurrentIndex(currentIndex + 1);
+            }
         } else {
             setCurrentIndex(0);
         }
@@ -119,6 +142,11 @@ function AudioPlayer({ currentTrack, currentIndex, setCurrentIndex, total }) {
                         handleNext={handleNext}
                         handlePrev={handlePrev}
                         total={total}
+                        setCurrentIndex={setCurrentIndex}
+                        isRandomClick={isRandomClick}
+                        setIsRandomClick={setIsRandomClick}
+                        isRepeatClick={isRepeatClick}
+                        setIsRepeatClick={setIsRepeatClick}
                     />
                 </div>
             </div>

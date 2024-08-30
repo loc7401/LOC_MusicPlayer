@@ -5,8 +5,6 @@ import classNames from "classnames/bind";
 const cx = classNames.bind(styles);
 
 function Queue({ tracks, setCurrentIndex, currentIndex }) {
-    console.log(tracks);
-
     const formatDuration = (ms) => {
         const totalSeconds = Math.floor(ms / 1000);
         const minutes = Math.floor(totalSeconds / 60);

@@ -1,9 +1,13 @@
 .control-wrapper{
     display: flex;
     margin: 0;
-    width: 30%;
+    width: 50%;
     justify-content: space-around;
 
+    .random-btn{ 
+        margin-right: 16px;
+    }
+    
     .action-btn{
         display: flex;
         width: 50px;
@@ -19,14 +23,24 @@
         }
     }
 
-    .play-pause-btn{
+    .play-pause-btn, .repeat-btn, .random-btn{
         display: flex;
         align-items: center;
         cursor: pointer;
+        
+    
 
         &:hover{
             opacity: 0.8;
             transform: scale(1.05);
         }
+    }
+
+    .repeat-btn{ 
+        margin-left: 16px;
+    }
+
+    .repeat-active{
+        color:  green !important;
     }
 }

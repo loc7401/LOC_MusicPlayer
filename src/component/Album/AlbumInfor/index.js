@@ -7,7 +7,6 @@ function AlbumInfor({ album }) {
     album?.artists?.map((element) => {
         artist.push(element.name);
     });
-    console.log(album);
     return (
         <div className={cx("albumInfor-container")}>
             <div className={cx("albumName")}>
