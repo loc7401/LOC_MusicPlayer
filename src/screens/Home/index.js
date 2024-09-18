@@ -16,7 +16,7 @@ const cx = classNames.bind(styles);
 
 export default function Home() {
     const [token, setToken] = useState("");
-
+    const [playListIndex, setPlayListIndex] = useState(0);
     useEffect(() => {
         const token = window.localStorage.getItem("token");
         const hash = window.location.hash;
@@ -39,9 +39,15 @@ export default function Home() {
             <div className={cx("main-body")}>
                 <Sidebar />
                 <Routes>
-                    <Route path="/library" element={<Library />}></Route>
+                    <Route
+                        path="/library"
+                        element={<Library setPlayListIndex={setPlayListIndex} />}
+                    ></Route>
                     <Route path="/feed" element={<Feed />}></Route>
-                    <Route path="/player" element={<Player />}></Route>
+                    <Route
+                        path="/player"
+                        element={<Player playListIndex={playListIndex} />}
+                    ></Route>
                     <Route path="/trending" element={<Trending />}></Route>
                     <Route path="/favorites" element={<Favorites />}></Route>
                 </Routes>

@@ -1,13 +1,14 @@
 import ProgressCircle from "../ProgressCircle";
 import WaveAnimation from "../../PlayerControls/WaveAnimation";
 import Controls from "../../PlayerControls/Controls";
+import AlbumImage from "../../Album/AlbumImage";
 import classNames from "classnames/bind";
 import styles from "./AudioPlayer.module.scss";
 import { useEffect, useRef, useState } from "react";
 
 const cx = classNames.bind(styles);
 
-function AudioPlayer({ currentTrack, currentIndex, setCurrentIndex, total }) {
+function AudioPlayer({ currentTrack, currentIndex, setCurrentIndex, total, album }) {
     const artistNames = currentTrack?.artists?.map((artist) => artist.name).join(", ");
 
     const [isPlaying, setIsPlaying] = useState(false);
@@ -113,9 +114,14 @@ function AudioPlayer({ currentTrack, currentIndex, setCurrentIndex, total }) {
         return n > 9 ? n : `0${n}`;
     };
 
+    const artist = [];
+    album?.artists?.map((element) => {
+        artist.push(element.name);
+    });
+
     return (
-        <div className={cx("player-container")}>
-            <div className={cx("player-left")}>
+        <div className={cx("player-track-wrap")}>
+            {/* <div className={cx("player-left")}>
                 <ProgressCircle
                     percentage={currentPercent}
                     isPlaying={true}
@@ -123,32 +129,30 @@ function AudioPlayer({ currentTrack, currentIndex, setCurrentIndex, total }) {
                     size={300}
                     color="#c96850"
                 />
-            </div>
+            </div> */}
 
-            <div className={cx("player-right")}>
-                <p className={cx("song-title")}>{currentTrack?.name}</p>
-                <p className={cx("song-artist")}>{artistNames}</p>
+            {/* <div className={cx("song-duration")}>
+                <p className={cx("duration")}>0:{addZero(Math.round(trackProgress))} </p>
+                <WaveAnimation isPlaying={isPlaying} />
+                <p className={cx("duration")}>0:30 </p>
+            </div> */}
 
-                <div className={cx("player-control")}>
-                    <div className={cx("song-duration")}>
-                        <p className={cx("duration")}>0:{addZero(Math.round(trackProgress))} </p>
-                        <WaveAnimation isPlaying={isPlaying} />
-                        <p className={cx("duration")}>0:30 </p>
-                    </div>
+            <AlbumImage url={currentTrack?.album?.images[0]?.url} />
 
-                    <Controls
-                        isPlaying={isPlaying}
-                        setIsPlaying={setIsPlaying}
-                        handleNext={handleNext}
-                        handlePrev={handlePrev}
-                        total={total}
-                        setCurrentIndex={setCurrentIndex}
-                        isRandomClick={isRandomClick}
-                        setIsRandomClick={setIsRandomClick}
-                        isRepeatClick={isRepeatClick}
-                        setIsRepeatClick={setIsRepeatClick}
-                    />
-                </div>
+            <div className={cx("player-controls-wrap")}>
+                <p className={cx("song-artist")}>{`${album?.name} - ${artist.join(", ")}`}</p>
+                <Controls
+                    isPlaying={isPlaying}
+                    setIsPlaying={setIsPlaying}
+                    handleNext={handleNext}
+                    handlePrev={handlePrev}
+                    total={total}
+                    setCurrentIndex={setCurrentIndex}
+                    isRandomClick={isRandomClick}
+                    setIsRandomClick={setIsRandomClick}
+                    isRepeatClick={isRepeatClick}
+                    setIsRepeatClick={setIsRepeatClick}
+                />
             </div>
         </div>
     );

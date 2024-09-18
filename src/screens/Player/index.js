@@ -9,12 +9,11 @@ import styles from "./Player.module.scss";
 
 const cx = classNames.bind(styles);
 
-export default function Player() {
+export default function Player({ playListIndex }) {
     const location = useLocation();
     const [tracks, setTracks] = useState([]);
     const [currentTrack, setCurrentTrack] = useState({});
     const [currentIndex, setCurrentIndex] = useState(0);
-
     useEffect(() => {
         if (location.state) {
             apiClient
@@ -52,14 +51,16 @@ export default function Player() {
                     isPlaying={true}
                     currentIndex={currentIndex}
                     setCurrentIndex={setCurrentIndex}
+                    album={currentTrack?.album}
                 />
             </div>
             <div className={cx("player-body-right")}>
-                <SongCard album={currentTrack?.album} />
+                {/* <SongCard album={currentTrack?.album} /> */}
                 <Queue
                     tracks={tracks}
                     setCurrentIndex={setCurrentIndex}
                     currentIndex={currentIndex}
+                    playListIndex={playListIndex}
                 />
             </div>
         </div>

@@ -7,9 +7,9 @@ function AlbumImage({ url }) {
     return (
         <div className={cx("albumImage")}>
             <img src={url} className={cx("albumImage-art")} alt="albumArt" />
-            <div className={cx("albumImage-shadow")}>
+            {/* <div className={cx("albumImage-shadow")}>
                 <img src={url} className={cx("albumImage-shadow")} alt="shadow" />
-            </div>
+            </div> */}
         </div>
     );
 }

@@ -1,40 +1,45 @@
 .queue-container{
     width: 100%;
-    height: 35%;
+    height: 75%;
     border-radius: 30px 0 30px 30px;
-    background-color: #3e61d2;
-    opacity: 1;
-    background-image: repeating-radial-gradient(
-        circle at 0 0,
-        transparent 0,
-        #3e61d2 40px
-    ), repeating-linear-gradient(#4767d055, #4767d0);
+    // background-color: #3e61d2;
+    // opacity: 1;
+    // background-image: repeating-radial-gradient(
+    //     circle at 0 0,
+    //     transparent 0,
+    //     #3e61d2 40px
+    // ), repeating-linear-gradient(#4767d055, #4767d0);
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: flex-start;
     justify-content: center;
 
-    .queue{
-        height: 85%;
-        flex-direction: column;
-        justify-content: space-between;
-        width: 80%;
+    .name-total-wrap{
+        margin-bottom: 25px;
+        padding-left: 10px;
     }
     
-    .up-next{
-        font-size: 20px;
+    .playlist-name{
+        font-size: 3rem;
         font-weight: 700;
         color: #fff;
-        text-align: center;
         margin: 0;
-        margin-bottom: 10px;
+        font-family: "Merienda", cursive;
+    }
+
+    .playList-total{
+        margin: 0;
+        font-size: 0.8rem;
+        color: #9aa9c2;
     }
     
     .queue-list{
-        height: 80%;
-        width: 100%;
-        padding-right: 10px;
+        // height: 80%;
+        width: 70%;
+        padding-right: 20px;
         overflow-y: auto ;
+        overflow-x: hidden;
+        align-self: flex-start;
         
     }
 
@@ -42,22 +47,47 @@
         width: 100%;
         display: flex;
         justify-content: space-between;
-        padding: 6px 0;
+        padding: 6px 10px;
         font-weight: 500;
         color: #fff;
-        font-size: 1rem;
         cursor: pointer;
         transition: all 0.2s ease;
+
+        .name-artist-wrap{
+            overflow: hidden;
+        }
 
         p{
             margin: 0;
             padding: 0 7px;
+            text-wrap: nowrap;
+        }
+
+        .track-name{
+            font-size: 1rem;
+            width: 100%;
+            overflow: hidden;
+        }
+
+        .track-artist{
+            font-size: 0.8rem;
+            color: #9aa9c2;
+        }
+
+        .track-numbering{
+            margin-right:  16px;
+        }
+
+        .track-img{
+            width: 40px;
+            height: 40px;
+            border-radius: 8px;
         }
 
         &:hover{
-            transform: scale(0.99);
+            // transform: scale(0.99);
             background-color: #28354c3d;
-            margin-bottom: 5px;
+            // margin-bottom: 5px;
             border-radius: 5px;
         }
     }
@@ -65,6 +95,17 @@
     .track-name{
         width: 75%;
         text-overflow: ellipsis;
+    }
+}
+
+.track-detail{
+    display: flex;
+    max-width: 90%;
+
+    span{
+        display: inline-block;
+        width: 20px;
+        margin: auto;
     }
 }
 

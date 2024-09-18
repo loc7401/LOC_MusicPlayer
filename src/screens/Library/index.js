@@ -8,7 +8,7 @@ import { useNavigate } from "react-router-dom";
 
 const cx = classNames.bind(styles);
 
-export default function Library() {
+export default function Library({ setPlayListIndex }) {
     const [playLists, setPlayLists] = useState(null);
 
     useEffect(() => {
@@ -18,18 +18,19 @@ export default function Library() {
     }, []);
 
     const navigate = useNavigate();
-    const playPlaylist = (id) => {
-        navigate("/player", { state: { id: id } });
-    };
 
+    const handleClick = (id, index) => {
+        navigate("/player", { state: { id: id } });
+        setPlayListIndex(index);
+    };
     return (
         <div className="screen-container magicpattern">
             <div className={cx("library-body")}>
-                {playLists?.map((playlist) => (
+                {playLists?.map((playlist, index) => (
                     <div
                         key={playlist.id}
                         className={cx("playListCard")}
-                        onClick={() => playPlaylist(playlist.id)}
+                        onClick={() => handleClick(playlist.id, index)}
                     >
                         <img src={playlist.images[0].url} className={cx("playListImage")}></img>
                         <p className={cx("playListName")}>{playlist.name}</p>
