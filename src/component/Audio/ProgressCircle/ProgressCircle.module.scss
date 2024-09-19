@@ -5,7 +5,7 @@ circle{
 }
 
 .active{
-    animation: rotation 30s infinite linear;
+    animation: rotation 30s linear infinite ;
     transform-origin: 50% 50%;
 }
 
@@ -19,7 +19,12 @@ circle{
 }
 
 .progress-circle{
+    display: flex;
     justify-content: center;
     align-items: center;
+    position: absolute;
+    z-index: 9;
+    width: 100%;
+    height: 100%;
 }
 

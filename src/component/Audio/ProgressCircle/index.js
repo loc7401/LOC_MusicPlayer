@@ -47,22 +47,24 @@ function ProgressCicle({ percentage, isPlaying, image, size, color }) {
                 </defs>
 
                 <image
-                    className={cx({ active: isPlaying })}
+                    className={cx("active")}
                     x={30}
                     y={30}
                     width={2 * (size / 2 - 30)}
                     height={2 * (size / 2 - 30)}
                     href="https://i.imgur.com/F63V2as.png"
                     clipPath={"url(#myCircle)"}
+                    style={{ animationPlayState: isPlaying ? "running" : "paused" }}
                 />
                 <image
-                    className={cx({ active: isPlaying })}
+                    className={cx("active")}
                     x={100}
                     y={100}
                     width={2 * (size / 2 - 100)}
                     height={2 * (size / 2 - 100)}
                     href={image}
                     clipPath={"url(#myInnerCircle)"}
+                    style={{ animationPlayState: isPlaying ? "running" : "paused" }}
                 />
             </svg>
         </div>

@@ -5,7 +5,7 @@ import classNames from "classnames/bind";
 
 const cx = classNames.bind(styles);
 
-function Queue({ tracks, setCurrentIndex, currentIndex, playListIndex }) {
+function Queue({ tracks, setCurrentIndex, currentIndex, index }) {
     const formatDuration = (ms) => {
         const totalSeconds = Math.floor(ms / 1000);
         const minutes = Math.floor(totalSeconds / 60);
@@ -15,7 +15,6 @@ function Queue({ tracks, setCurrentIndex, currentIndex, playListIndex }) {
 
     const [playLists, setPlayLists] = useState(null);
     const [currentPlayList, setCurrentPlayList] = useState({});
-
     useEffect(() => {
         APIKit.get("me/playlists").then((response) => {
             setPlayLists(response.data.items);
@@ -27,15 +26,15 @@ function Queue({ tracks, setCurrentIndex, currentIndex, playListIndex }) {
 
     useEffect(() => {
         if (playLists && playLists.length > 0) {
-            setCurrentPlayList(playLists[playListIndex]);
+            setCurrentPlayList(playLists[index]);
         }
-    }, [playListIndex, playLists]);
-    console.log(currentPlayList);
+    }, [index, playLists]);
+
     return (
         <div className={cx("queue-container")}>
             <div className={cx("name-total-wrap")}>
-                <p className={cx("playlist-name")}>{currentPlayList.name}</p>
-                <p className={cx("playList-total")}>#{currentPlayList.tracks?.total} Bài hát</p>
+                <p className={cx("playlist-name")}>{currentPlayList?.name}</p>
+                <p className={cx("playList-total")}>#{currentPlayList?.tracks?.total} Bài hát</p>
             </div>
 
             <div className={cx("queue-list")}>
@@ -55,7 +54,7 @@ function Queue({ tracks, setCurrentIndex, currentIndex, playListIndex }) {
                         >
                             <div className={cx("track-detail")}>
                                 <span className={cx("track-numbering")}>{index + 1}</span>
-                                <img className={cx("track-img")} src={urlImage} />
+                                <img className={cx("track-img")} src={urlImage} alt="track-img" />
                                 <div className={cx("name-artist-wrap")}>
                                     <p className={cx("track-name")}>{element?.track.name}</p>
                                     <p className={cx("track-artist")}>{artistNames}</p>

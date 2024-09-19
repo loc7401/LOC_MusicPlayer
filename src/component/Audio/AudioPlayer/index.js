@@ -36,7 +36,13 @@ function AudioPlayer({ currentTrack, currentIndex, setCurrentIndex, total, album
 
         intervalRef.current = setInterval(() => {
             if (audioRef.current.ended) {
-                handleNext();
+                if (isRepeatClick) {
+                    audioRef.current.pause();
+                    audioRef.current = new Audio(audioSrc);
+                    audioRef.current.play();
+                } else {
+                    handleNext();
+                }
             } else {
                 setTrackProgress(audioRef.current.currentTime);
             }
@@ -88,11 +94,7 @@ function AudioPlayer({ currentTrack, currentIndex, setCurrentIndex, total, album
 
     const handleNext = () => {
         if (currentIndex < total.length - 1) {
-            if (isRepeatClick) {
-                audioRef.current.pause();
-                audioRef.current = new Audio(audioSrc);
-                audioRef.current.play();
-            } else if (isRandomClick) {
+            if (isRandomClick) {
                 setCurrentIndex(randomIndex);
             } else {
                 setCurrentIndex(currentIndex + 1);
@@ -121,23 +123,16 @@ function AudioPlayer({ currentTrack, currentIndex, setCurrentIndex, total, album
 
     return (
         <div className={cx("player-track-wrap")}>
-            {/* <div className={cx("player-left")}>
+            <div className={cx("progress-circle")}>
                 <ProgressCircle
                     percentage={currentPercent}
-                    isPlaying={true}
+                    isPlaying={isPlaying}
                     image={currentTrack?.album?.images[0]?.url}
-                    size={300}
-                    color="#c96850"
+                    size={500}
+                    color="#1ed760"
                 />
-            </div> */}
-
-            {/* <div className={cx("song-duration")}>
-                <p className={cx("duration")}>0:{addZero(Math.round(trackProgress))} </p>
-                <WaveAnimation isPlaying={isPlaying} />
-                <p className={cx("duration")}>0:30 </p>
-            </div> */}
-
-            <AlbumImage url={currentTrack?.album?.images[0]?.url} />
+                <AlbumImage url={currentTrack?.album?.images[0]?.url} />
+            </div>
 
             <div className={cx("player-controls-wrap")}>
                 <p className={cx("song-artist")}>{`${album?.name} - ${artist.join(", ")}`}</p>
