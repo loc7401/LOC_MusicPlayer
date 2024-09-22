@@ -38,7 +38,7 @@ function ProgressCircle({ percentage, isPlaying, image, color }) {
     }, []);
 
     return (
-        <div className={cx("progress-circle")}>
+        <div className="flex justify-center items-center absolute z-10 w-full h-full md:scale-1 scale-75">
             <svg className="md:m-0 mt-9" width={size} height={size}>
                 <svg width={size} height={size}>
                     <g>

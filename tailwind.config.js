@@ -16,6 +16,8 @@ module.exports = {
             },
             scale: {
                 102: "1.02",
+                1: "1",
+                0.7: "0.7",
             },
             padding: {
                 "custom-y": "54px",

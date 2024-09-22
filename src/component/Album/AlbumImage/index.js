@@ -8,7 +8,7 @@ function AlbumImage({ url }) {
         <div className={cx("albumImage")}>
             <img
                 src={url}
-                className="md:w-full w-[75%] md:rounded-t-3xl md:m-0 mt-9 rounded-3xl blur-xs brightness-75"
+                className="md:w-full w-7/12 md:rounded-t-3xl md:m-0 mt-9 rounded-3xl blur-xs brightness-75"
                 alt="albumArt"
             />
         </div>
