@@ -25,22 +25,27 @@ export default function Library() {
         });
     };
     return (
-        <div className="screen-container magicpattern">
-            <div className={cx("library-body")}>
+        <div className="screen-container magicpattern px-custom-x py-custom-y sm:p-0">
+            <div className="w-full h-full p-[3%] grid grid-cols-2 md:grid-cols-6 gap-4 overflow-y-auto ">
                 {playLists?.map((playlist, index) => (
                     <div
                         key={playlist.id}
-                        className={cx("playListCard")}
+                        className="playListCard relative w-full h-full rounded-[20px] border border-solid border-[#3645622e] p-3.5 mb-[2%] bg-playlistCard-gradient transition-all duration-200 ease-in-out cursor-pointer hover:scale-102  "
                         onClick={() => handleClick(playlist.id, index)}
                     >
                         <img
                             src={playlist.images[0].url}
-                            className={cx("playListImage")}
+                            className="w-full rounded-xl"
                             alt="playListImage"
                         ></img>
-                        <p className={cx("playListName")}>{playlist.name}</p>
-                        <p className={cx("playListSong")}>{playlist.tracks.total} Bài hát</p>
-                        <div className={cx("playlist-fade")}>
+                        <div className="py-2.5">
+                            <p className=" font-semibold text-white">{playlist.name}</p>
+                            <p className="text-[#c4d0e37c] text-sm">
+                                {playlist.tracks.total} Bài hát
+                            </p>
+                        </div>
+
+                        <div className="playlist-fade absolute opacity-0 right-0 bottom-0 w-full h-[24%] rounded-2xl bg-playlistFade-gradient flex items-end justify-end p-[8%] transition-all duration-500 ease">
                             <IconContext.Provider value={{ size: "50px", color: "E99D72" }}>
                                 <AiFillPlayCircle />
                             </IconContext.Provider>

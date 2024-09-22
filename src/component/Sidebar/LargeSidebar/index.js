@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import SidebarButton from "../SidebarBtn";
+import SidebarButton from "../../SidebarBtn";
 import styles from "./Sidebar.module.scss";
 import classNames from "classnames/bind";
 
@@ -9,7 +9,7 @@ import { AiFillCaretRight } from "react-icons/ai";
 import { AiFillHeart } from "react-icons/ai";
 import { IoLibrary } from "react-icons/io5";
 import { BiLogOut } from "react-icons/bi";
-import apiClient from "../../spotify";
+import apiClient from "../../../spotify";
 
 const cx = classNames.bind(styles);
 
@@ -31,8 +31,12 @@ export default function Sidebar() {
     // };
 
     return (
-        <div className={cx("sidebar-container")}>
-            <img src={image} alt="profile-image" className={cx("profile-img")} />
+        <div className="w-[120px] h-full sm:flex hidden flex-col justify-between items-center">
+            <img
+                src={image}
+                alt="profile-image"
+                className="h-[50px] w-[50px] rounded-[50px] mt-7"
+            />
 
             <div>
                 <SidebarButton title={"Feed"} to={"/feed"} icon={<AiFillLayout />} />

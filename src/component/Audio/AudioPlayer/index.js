@@ -122,7 +122,7 @@ function AudioPlayer({ currentTrack, currentIndex, setCurrentIndex, total, album
     });
 
     return (
-        <div className={cx("player-track-wrap")}>
+        <div className="flex md:w-4/6 md:m-0 mb-2.5 w-full flex-col justify-betwee items-center bg-[#8d8d9159] rounded-[20px]">
             <div className={cx("progress-circle")}>
                 <ProgressCircle
                     percentage={currentPercent}
@@ -134,7 +134,7 @@ function AudioPlayer({ currentTrack, currentIndex, setCurrentIndex, total, album
                 <AlbumImage url={currentTrack?.album?.images[0]?.url} />
             </div>
 
-            <div className={cx("player-controls-wrap")}>
+            <div className="p-4 w-full flex flex-col items-center">
                 <p className={cx("song-artist")}>{`${album?.name} - ${artist.join(", ")}`}</p>
                 <Controls
                     isPlaying={isPlaying}

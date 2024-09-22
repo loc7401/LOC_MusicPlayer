@@ -31,13 +31,15 @@ function Queue({ tracks, setCurrentIndex, currentIndex, index }) {
     }, [index, playLists]);
 
     return (
-        <div className={cx("queue-container")}>
-            <div className={cx("name-total-wrap")}>
-                <p className={cx("playlist-name")}>{currentPlayList?.name}</p>
+        <div className="queue-container w-full h-full md:h-3/4 flex flex-col items-start justify-center">
+            <div className="md:mb-5 mb-2 pl-2.5">
+                <p className="md:text-5xl text-3xl font-bold text-white m-0 font-Merienda">
+                    {currentPlayList?.name}
+                </p>
                 <p className={cx("playList-total")}>#{currentPlayList?.tracks?.total} Bài hát</p>
             </div>
 
-            <div className={cx("queue-list")}>
+            <div className="md:w-3/4 w-full pr-5 overflow-y-auto overflow-x-hidden items-start">
                 {tracks?.map((element, index) => {
                     const artistNames = element?.track?.artists
                         ?.map((artist) => artist.name)

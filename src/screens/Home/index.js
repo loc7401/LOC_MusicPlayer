@@ -8,7 +8,8 @@ import Library from "../Library";
 import Player from "../Player";
 import Trending from "../Trending";
 import Favorites from "../Favorites";
-import Sidebar from "../../component/Sidebar";
+import Sidebar from "../../component/Sidebar/LargeSidebar";
+import MobileSidebar from "../../component/Sidebar/MobileSidebar";
 import Login from "../Auth/login";
 import { setClientToken } from "../../spotify";
 
@@ -37,6 +38,7 @@ export default function Home() {
         <Router>
             <div className={cx("main-body")}>
                 <Sidebar />
+                <MobileSidebar />
                 <Routes>
                     <Route path="/library" element={<Library />}></Route>
                     <Route path="/feed" element={<Feed />}></Route>

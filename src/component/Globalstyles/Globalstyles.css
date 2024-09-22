@@ -19,6 +19,10 @@
     display: flex;
 }
 
+.playListCard:hover .playlist-fade {
+    opacity: 1;
+}
+
 html ::-webkit-scrollbar {
     border-radius: 0px;
     width: 8px;

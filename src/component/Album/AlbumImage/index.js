@@ -6,10 +6,11 @@ const cx = classNames.bind(styles);
 function AlbumImage({ url }) {
     return (
         <div className={cx("albumImage")}>
-            <img src={url} className={cx("albumImage-art")} alt="albumArt" />
-            {/* <div className={cx("albumImage-shadow")}>
-                <img src={url} className={cx("albumImage-shadow")} alt="shadow" />
-            </div> */}
+            <img
+                src={url}
+                className="md:w-full w-4/5 md:rounded-t-3xl md:m-0 mt-9 rounded-3xl blur-xs brightness-75"
+                alt="albumArt"
+            />
         </div>
     );
 }
