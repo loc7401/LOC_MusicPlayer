@@ -134,7 +134,7 @@ function AudioPlayer({ currentTrack, currentIndex, setCurrentIndex, total, album
                 <AlbumImage url={currentTrack?.album?.images[0]?.url} />
             </div>
 
-            <div className="p-4 w-full flex flex-col items-center">
+            <div className="p-2 w-full flex flex-col items-center">
                 <p className={cx("song-artist")}>{`${album?.name} - ${artist.join(", ")}`}</p>
                 <Controls
                     isPlaying={isPlaying}

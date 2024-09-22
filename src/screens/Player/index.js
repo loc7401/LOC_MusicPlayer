@@ -45,7 +45,7 @@ export default function Player() {
 
     return (
         <div className="screen-container magicpattern flex flex-col md:flex-row">
-            <div className="w-full md:w-1/2 h-full flex items-center justify-center">
+            <div className="w-full md:w-1/2 md:h-full h-1/2 flex items-center justify-center">
                 <AudioPlayer
                     currentTrack={currentTrack}
                     total={tracks}
@@ -55,7 +55,7 @@ export default function Player() {
                     album={currentTrack?.album}
                 />
             </div>
-            <div className="w-full md:w-1/2 md:p-0 pb-8 md:h-full px-5 h-[460px] flex flex-col justify-center">
+            <div className="w-full md:w-1/2 md:p-0 p-6 pt-0 md:h-full h-1/2 px-5 flex flex-col justify-center">
                 {/* <SongCard album={currentTrack?.album} /> */}
                 <Queue
                     tracks={tracks}

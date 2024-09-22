@@ -32,14 +32,16 @@ function Queue({ tracks, setCurrentIndex, currentIndex, index }) {
 
     return (
         <div className="queue-container w-full h-full md:h-3/4 flex flex-col items-start justify-center">
-            <div className="md:mb-5 mb-2 pl-2.5">
+            <div className="md:mb-5 mb-3 md:pl-2.5 p-0 flex flex-col max-md:items-center max-md:w-full">
                 <p className="md:text-5xl text-3xl font-bold text-white m-0 font-Merienda">
                     {currentPlayList?.name}
                 </p>
-                <p className={cx("playList-total")}>#{currentPlayList?.tracks?.total} Bài hát</p>
+                <p className="m-0 text-sm text-[#9aa9c2] max-md:mt-1">
+                    #{currentPlayList?.tracks?.total} Bài hát
+                </p>
             </div>
 
-            <div className="md:w-3/4 w-full pr-5 overflow-y-auto overflow-x-hidden items-start">
+            <div className="md:w-3/4 w-full md:pr-5 overflow-y-auto overflow-x-hidden items-start">
                 {tracks?.map((element, index) => {
                     const artistNames = element?.track?.artists
                         ?.map((artist) => artist.name)
@@ -49,21 +51,30 @@ function Queue({ tracks, setCurrentIndex, currentIndex, index }) {
                     return (
                         <div
                             key={index}
-                            className={cx("queue-item", {
-                                "active-track": currentIndex === index,
-                            })}
+                            className={`w-full flex justify-between py-[6px] px-[10px] font-medium text-white cursor-pointer transition-all duration-200 ease-in-out ${
+                                currentIndex === index ? "active-track" : ""
+                            }`}
                             onClick={() => setCurrentIndex(index)}
                         >
-                            <div className={cx("track-detail")}>
-                                <span className={cx("track-numbering")}>{index + 1}</span>
-                                <img className={cx("track-img")} src={urlImage} alt="track-img" />
-                                <div className={cx("name-artist-wrap")}>
-                                    <p className={cx("track-name")}>{element?.track.name}</p>
-                                    <p className={cx("track-artist")}>{artistNames}</p>
+                            <div className="flex max-w-[90%]">
+                                <span className="mr-4 inline-block w-5 m-auto">{index + 1}</span>
+                                <img
+                                    className="w-[40px] h-[40px] rounded-[8px]"
+                                    src={urlImage}
+                                    alt="track-img"
+                                />
+                                <div className="overflow-hidden">
+                                    <p className="m-0 py-0 px-[7px] text-nowrap text-base w-full overflow-hidden text-ellipsis">
+                                        {element?.track.name}
+                                    </p>
+                                    <p className="m-0 py-0 px-[7px] text-nowrap text-sm text-[#9aa9c2]">
+                                        {artistNames}
+                                    </p>
                                 </div>
                             </div>
-
-                            <p>{durationFormatted}</p>
+                            <div className="flex items-center">
+                                <p>{durationFormatted}</p>
+                            </div>
                         </div>
                     );
                 })}

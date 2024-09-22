@@ -36,7 +36,7 @@ export default function Home() {
         <Login />
     ) : (
         <Router>
-            <div className={cx("main-body")}>
+            <div className="md:h-screen h-screen w-screen bg-[#6870ff45] rounded-[30px] flex">
                 <Sidebar />
                 <MobileSidebar />
                 <Routes>

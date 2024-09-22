@@ -4,7 +4,7 @@ import React, { useState, useEffect } from "react";
 
 const cx = classNames.bind(styles);
 const Circle = ({ color, percentage, size, strokeWidth }) => {
-    const radius = size / 2 - 10;
+    const radius = size / 2 - 20;
     const circle = 2 * Math.PI * radius - 20;
     const strokePct = ((100 - Math.round(percentage)) * circle) / 100;
 
@@ -42,9 +42,9 @@ function ProgressCircle({ percentage, isPlaying, image, color }) {
             <svg className="md:m-0 mt-9" width={size} height={size}>
                 <svg width={size} height={size}>
                     <g>
-                        <Circle strokeWidth={"0.4rem"} color={"#3B4F73"} size={size} />
+                        <Circle strokeWidth={"0.3rem"} color={"#3B4F73"} size={size} />
                         <Circle
-                            strokeWidth={"0.6rem"}
+                            strokeWidth={"0.4rem"}
                             color={color}
                             percentage={percentage}
                             size={size}
