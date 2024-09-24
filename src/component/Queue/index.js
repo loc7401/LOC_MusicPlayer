@@ -25,8 +25,9 @@ function Queue({ tracks, setCurrentIndex, currentIndex, index }) {
     }, []);
 
     useEffect(() => {
+        const currenPlaylistIndex = localStorage.getItem("currenPlaylistIndex");
         if (playLists && playLists.length > 0) {
-            setCurrentPlayList(playLists[index]);
+            setCurrentPlayList(playLists[currenPlaylistIndex]);
         }
     }, [index, playLists]);
 
@@ -56,7 +57,7 @@ function Queue({ tracks, setCurrentIndex, currentIndex, index }) {
                             }`}
                             onClick={() => setCurrentIndex(index)}
                         >
-                            <div className="flex max-w-[90%]">
+                            <div className="flex items-center justify-center max-w-[90%]">
                                 <span className="mr-4 inline-block w-5 m-auto">{index + 1}</span>
                                 <img
                                     className="w-[40px] h-[40px] rounded-[8px]"

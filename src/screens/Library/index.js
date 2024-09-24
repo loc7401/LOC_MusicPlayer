@@ -23,10 +23,11 @@ export default function Library() {
         navigate("/player", {
             state: { id: id, index: index },
         });
+        localStorage.setItem("currenPlaylistIndex", index);
     };
     return (
-        <div className="screen-container magicpattern px-custom-x py-custom-y sm:p-0">
-            <div className="w-full h-full p-[3%] grid grid-cols-2 md:grid-cols-6 gap-4 overflow-y-auto ">
+        <div className="screen-container magicpattern md:pt-16 px-custom-x py-custom-y md:pb-7">
+            <div className="w-full h-full mt-4 md:mt-1 p-[3%] md:pt-0 grid grid-cols-2 md:grid-cols-6 gap-4 overflow-y-auto ">
                 {playLists?.map((playlist, index) => (
                     <div
                         key={playlist.id}
