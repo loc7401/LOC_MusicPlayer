@@ -9,7 +9,6 @@ import {
 } from "react-icons/ai";
 import { IconName } from "react-icons/io5";
 import { IoShuffle, IoRepeat } from "react-icons/io5";
-import { useState } from "react";
 const cx = classNames.bind(styles);
 
 function Controls({
@@ -17,22 +16,11 @@ function Controls({
     setIsPlaying,
     handleNext,
     handlePrev,
-    total,
-    setCurrentIndex,
     isRandomClick,
     setIsRandomClick,
     isRepeatClick,
     setIsRepeatClick,
 }) {
-    // const handleRandom = () => {
-    //     const randomIndex = Math.floor(Math.random() * total.length);
-    //     if (isRandomClick) {
-    //         setCurrentIndex(randomIndex);
-    //     }
-    //     setIsRandomClick(!isRandomClick);
-    //     console.log(isRandomClick);
-    // };
-
     return (
         <IconContext.Provider value={{ size: "35px", color: "#C4D0E3" }}>
             <div className="flex m-0 md:w-1/2 w-3/4 justify-around">
