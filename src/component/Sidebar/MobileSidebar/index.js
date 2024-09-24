@@ -1,26 +1,20 @@
-import React, { useEffect, useState } from "react";
 import SidebarButton from "../../SidebarBtn";
-import styles from "../LargeSidebar/Sidebar.module.scss";
-import classNames from "classnames/bind";
 
 import { AiFillLayout } from "react-icons/ai";
 import { AiFillFire } from "react-icons/ai";
 import { AiFillCaretRight } from "react-icons/ai";
 import { AiFillHeart } from "react-icons/ai";
 import { IoLibrary } from "react-icons/io5";
-import { BiLogOut } from "react-icons/bi";
-import apiClient from "../../../spotify";
-
-const cx = classNames.bind(styles);
+// import apiClient from "../../../spotify";
 
 export default function MobileSidebar() {
-    const [image, setImage] = useState("https://i.imgur.com/PDcUbJR.jpg");
+    // const [image, setImage] = useState("https://i.imgur.com/PDcUbJR.jpg");
 
-    useEffect(() => {
-        apiClient.get("me").then((response) => {
-            setImage(response.data.images[1].url);
-        });
-    }, []);
+    // useEffect(() => {
+    //     apiClient.get("me").then((response) => {
+    //         setImage(response.data.images[1].url);
+    //     });
+    // }, []);
 
     return (
         <div className="fixed z-[999] sm:hidden flex flex-col justify-between items-center">

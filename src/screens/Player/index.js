@@ -4,10 +4,6 @@ import apiClient from "../../spotify";
 // import SongCard from "../../component/SongCard";
 import Queue from "../../component/Queue";
 import AudioPlayer from "../../component/Audio/AudioPlayer";
-import classNames from "classnames/bind";
-import styles from "./Player.module.scss";
-
-const cx = classNames.bind(styles);
 
 export default function Player() {
     const location = useLocation();

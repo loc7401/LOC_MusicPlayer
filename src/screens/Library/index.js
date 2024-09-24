@@ -1,12 +1,8 @@
 import React, { useEffect, useState } from "react";
 import APIKit from "../../spotify";
-import styles from "./Library.module.scss";
-import classNames from "classnames/bind";
 import { AiFillPlayCircle } from "react-icons/ai";
 import { IconContext } from "react-icons";
 import { useNavigate } from "react-router-dom";
-
-const cx = classNames.bind(styles);
 
 export default function Library() {
     const [playLists, setPlayLists] = useState(null);
@@ -26,8 +22,8 @@ export default function Library() {
         localStorage.setItem("currenPlaylistIndex", index);
     };
     return (
-        <div className="screen-container magicpattern md:pt-16 px-custom-x py-custom-y md:pb-7">
-            <div className="w-full h-full mt-4 md:mt-1 p-[3%] md:pt-0 grid grid-cols-2 md:grid-cols-6 gap-4 overflow-y-auto ">
+        <div className="screen-container magicpattern px-custom-x py-custom-y md:pb-7">
+            <div className="w-full h-full mt-5 p-[3%] md:pt-0 grid grid-cols-2 md:grid-cols-6 gap-4 overflow-y-auto ">
                 {playLists?.map((playlist, index) => (
                     <div
                         key={playlist.id}

@@ -52,8 +52,10 @@ function Queue({ tracks, setCurrentIndex, currentIndex, index }) {
                     return (
                         <div
                             key={index}
-                            className={`w-full flex justify-between py-[6px] px-[10px] font-medium text-white cursor-pointer transition-all duration-200 ease-in-out ${
-                                currentIndex === index ? "active-track" : ""
+                            className={`w-full flex justify-between py-[6px] px-[10px] font-medium hover:bg-active-track hover:rounded-md cursor-pointer transition-all duration-200 ease-in-out ${
+                                currentIndex === index
+                                    ? "bg-active-track rounded-md text-track-orange"
+                                    : "text-white"
                             }`}
                             onClick={() => setCurrentIndex(index)}
                         >

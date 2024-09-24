@@ -13,6 +13,11 @@ module.exports = {
             backgroundColor: (theme) => theme("colors"),
             colors: {
                 "deep-blue": "#1e2a3e",
+                "track-orange": "#ff9800",
+                "active-track": "#28354c3d",
+            },
+            width: {
+                "screen-container": "calc(100% - 100px)",
             },
             scale: {
                 102: "1.02",

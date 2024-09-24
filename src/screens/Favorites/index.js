@@ -5,5 +5,9 @@ import classNames from "classnames/bind";
 const cx = classNames.bind(styles);
 
 export default function Favorites() {
-    return <div className={cx("screen-container magicpattern")}>Favorites</div>;
+    return (
+        <div className="flex justify-center items-center bg-deep-blue round-[30px] overflow-hidden magicpattern">
+            <p className="text-white font-Merienda text-4xl">Comming soon!...</p>
+        </div>
+    );
 }
