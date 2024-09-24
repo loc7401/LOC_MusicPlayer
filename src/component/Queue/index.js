@@ -15,6 +15,8 @@ function Queue({ tracks, setCurrentIndex, currentIndex, index }) {
 
     const [playLists, setPlayLists] = useState(null);
     const [currentPlayList, setCurrentPlayList] = useState({});
+
+    const currenPlaylistIndex = localStorage.getItem("currenPlaylistIndex");
     useEffect(() => {
         APIKit.get("me/playlists").then((response) => {
             setPlayLists(response.data.items);
@@ -25,11 +27,18 @@ function Queue({ tracks, setCurrentIndex, currentIndex, index }) {
     }, []);
 
     useEffect(() => {
-        const currenPlaylistIndex = localStorage.getItem("currenPlaylistIndex");
         if (playLists && playLists.length > 0) {
             setCurrentPlayList(playLists[currenPlaylistIndex]);
+            localStorage.setItem("currentPlaylist", JSON.stringify(playLists[currenPlaylistIndex]));
         }
-    }, [index, playLists]);
+    }, [currenPlaylistIndex, playLists]);
+
+    useEffect(() => {
+        const _currentPlaylist = localStorage.getItem("currentPlaylist");
+        if (_currentPlaylist) {
+            setCurrentPlayList(JSON.parse(_currentPlaylist));
+        }
+    }, []);
 
     return (
         <div className="queue-container w-full h-full md:h-3/4 flex flex-col items-start justify-center">
