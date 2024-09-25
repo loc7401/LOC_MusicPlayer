@@ -51,7 +51,7 @@ export default function Player() {
                     album={currentTrack?.album}
                 />
             </div>
-            <div className="w-full md:w-1/2 md:p-0 p-6 md:h-full h-[60%] px-5 flex flex-col justify-center">
+            <div className="w-full md:w-1/2 md:p-0 p-6 pt-0 mt-3 md:mt-0 md:h-full h-[60%] px-5 flex flex-col justify-center">
                 {/* <SongCard album={currentTrack?.album} /> */}
                 <Queue
                     tracks={tracks}

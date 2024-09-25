@@ -30,7 +30,7 @@ export default function MobileSidebar() {
     }, []);
     console.log(isOpen);
     return (
-        <div className="flex fixed z-[999]">
+        <div className="flex sm:hidden fixed z-[999]">
             <button
                 onClick={toggleSidebar}
                 className="text-2xl cursor-pointer p-1 border-none text-[#9ca3af] fixed top-2 left-3 z-[9999]"
