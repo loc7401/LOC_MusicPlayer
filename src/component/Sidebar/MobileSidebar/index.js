@@ -16,6 +16,12 @@ export default function MobileSidebar() {
         setIsOpen(!isOpen);
     };
 
+    const closeSidebar = () => {
+        setTimeout(() => {
+            setIsOpen(!isOpen);
+        }, 100);
+    };
+
     const handleClickOutside = (event) => {
         if (sidebarRef.current && !sidebarRef.current.contains(event.target)) {
             setIsOpen(false); // Ẩn sidebar khi nhấp bên ngoài
@@ -28,7 +34,7 @@ export default function MobileSidebar() {
             document.removeEventListener("mousedown", handleClickOutside);
         };
     }, []);
-    console.log(isOpen);
+
     return (
         <div className="flex sm:hidden fixed z-[999]">
             <button
@@ -44,7 +50,7 @@ export default function MobileSidebar() {
                     isOpen ? "left-[0px]" : ""
                 }`}
             >
-                <ul className="space-y-2 font-medium">
+                <ul className="space-y-2 font-medium" onClick={closeSidebar}>
                     <li>
                         <SidebarButton title={"Feed"} to={"/feed"} icon={<AiFillLayout />} />
                     </li>
