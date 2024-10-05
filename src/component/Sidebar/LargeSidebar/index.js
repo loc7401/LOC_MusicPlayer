@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import SidebarButton from "../../SidebarBtn";
 import styles from "./Sidebar.module.scss";
 import classNames from "classnames/bind";
+import { IconContext } from "react-icons";
 
 import { AiFillLayout } from "react-icons/ai";
 import { AiFillFire } from "react-icons/ai";
@@ -9,34 +10,25 @@ import { AiFillCaretRight } from "react-icons/ai";
 import { AiFillHeart } from "react-icons/ai";
 import { IoLibrary } from "react-icons/io5";
 import { BiLogOut } from "react-icons/bi";
-import apiClient from "../../../spotify";
 
 const cx = classNames.bind(styles);
 
-export default function Sidebar() {
-    const [image, setImage] = useState("https://i.imgur.com/PDcUbJR.jpg");
-
-    useEffect(() => {
-        apiClient.get("me").then((response) => {
-            setImage(response.data.images[1].url);
-        });
-    }, []);
-
-    // const logOutBtn = () => {
-    //     localStorage.clear();
-
-    //     // Tải lại trang
-    //     window.location.reload();
-    //     console.log("loc");
-    // };
+export default function Sidebar({ userName, image }) {
+    const handleRemoveToken = () => {
+        localStorage.removeItem("token");
+        window.location.reload();
+    };
 
     return (
         <div className="w-[120px] h-full sm:flex hidden flex-col justify-between items-center">
-            <img
-                src={image}
-                alt="profile-image"
-                className="h-[50px] w-[50px] rounded-[50px] mt-7"
-            />
+            <div className="w-full flex flex-col items-center">
+                <img
+                    src={image}
+                    alt="profile-image"
+                    className="h-[50px] w-[50px] rounded-[50px] mt-7 mb-2"
+                />
+                <p className="self-center text-[#e5e7eb] w-full text-center text-sm font-Merienda">{`Chào ${userName}`}</p>
+            </div>
 
             <div>
                 <SidebarButton title={"Feed"} to={"/feed"} icon={<AiFillLayout />} />
@@ -45,8 +37,14 @@ export default function Sidebar() {
                 <SidebarButton title={"Favorites"} to={"/favorites"} icon={<AiFillHeart />} />
                 <SidebarButton title={"Library"} to={"/library"} icon={<IoLibrary />} />
             </div>
-            <SidebarButton title={"Logout"} to={"/"} icon={<BiLogOut />} />
-            {/* <button onClick={() => logOutBtn()}>logout</button> */}
+            {/* <SidebarButton title={"Logout"} to={"/"} icon={<BiLogOut />} /> */}
+            <div
+                className="w-20 h-20 cursor-pointer text-[#f8c9d0] rounded-[20px] flex justify-center items-center flex-col my-[5px] mx-auto transition-all duration-300 ease-in-out hover:text-white"
+                onClick={handleRemoveToken}
+            >
+                <BiLogOut className="text-[32px]" />
+                <p>Logout</p>
+            </div>
         </div>
     );
 }

@@ -11,9 +11,12 @@ import MobileSidebar from "../../component/Sidebar/MobileSidebar";
 import Login from "../Auth/login";
 import Header from "../../component/Header";
 import { setClientToken } from "../../spotify";
+import apiClient from "../../spotify";
 
 export default function Home() {
     const [token, setToken] = useState("");
+    const [userName, setUserName] = useState("");
+    const [image, setImage] = useState("https://i.imgur.com/PDcUbJR.jpg");
 
     useEffect(() => {
         const token = window.localStorage.getItem("token");
@@ -30,14 +33,23 @@ export default function Home() {
         }
     }, []);
 
+    useEffect(() => {
+        apiClient.get("me").then((response) => {
+            if (response) {
+                setUserName(response.data.display_name);
+                setImage(response.data.images[1].url);
+            }
+        });
+    }, []);
+
     return !token ? (
         <Login />
     ) : (
         <Router>
             <div className="md:h-screen h-screen w-screen bg-[#6870ff45] rounded-[30px] flex">
-                <Sidebar />
-                <MobileSidebar />
-                <div className="w-full">
+                <Sidebar userName={userName} image={image} />
+                <MobileSidebar userName={userName} />
+                <div className="w-full flex">
                     <Header />
                     <Routes>
                         <Route path="/library" element={<Library />}></Route>

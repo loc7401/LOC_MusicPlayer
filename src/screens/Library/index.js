@@ -23,7 +23,7 @@ export default function Library() {
     };
     return (
         <div className="screen-container magicpattern px-custom-x py-custom-y md:pb-7">
-            <div className="w-full h-full mt-5 p-[3%] md:pt-0 grid grid-cols-2 md:grid-cols-6 gap-4 overflow-y-auto ">
+            <div className="w-full h-full mt-5 p-[3%] md:pt-0 grid grid-cols-2 md:grid-cols-4 xl:grid-cols-6 gap-4 overflow-y-auto ">
                 {playLists?.map((playlist, index) => (
                     <div
                         key={playlist.id}

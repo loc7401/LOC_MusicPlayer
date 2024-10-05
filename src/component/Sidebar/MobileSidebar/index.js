@@ -1,16 +1,21 @@
 import { useState, useEffect, useRef } from "react";
 import SidebarButton from "../../SidebarBtn";
-
 import { AiFillLayout } from "react-icons/ai";
 import { AiFillFire } from "react-icons/ai";
 import { AiFillCaretRight } from "react-icons/ai";
 import { AiFillHeart } from "react-icons/ai";
 import { IoLibrary } from "react-icons/io5";
+import { BiLogOut } from "react-icons/bi";
 // import apiClient from "../../../spotify";
 
-export default function MobileSidebar() {
+export default function MobileSidebar({ userName }) {
     const [isOpen, setIsOpen] = useState();
     const sidebarRef = useRef(null);
+
+    const handleRemoveToken = () => {
+        localStorage.removeItem("token");
+        window.location.reload();
+    };
 
     const toggleSidebar = () => {
         setIsOpen(!isOpen);
@@ -46,11 +51,12 @@ export default function MobileSidebar() {
 
             <div
                 ref={sidebarRef}
-                className={`bg-[#1c1e45] dark:bg-gray-800 h-[100vh] fixed left-[-250px] z-[99999] p-4 transition-all duration-300 ease-in-out text-white ${
+                className={`bg-[#1c1e45] dark:bg-gray-800 h-[100vh] flex flex-col justify-between fixed left-[-250px] z-[99999] p-4 transition-all duration-300 ease-in-out text-white ${
                     isOpen ? "left-[0px]" : ""
                 }`}
             >
                 <ul className="space-y-2 font-medium" onClick={closeSidebar}>
+                    <p className="self-center text-[#e5e7eb] mb-3 w-full text-center text-sm font-Merienda">{`Chào ${userName}`}</p>
                     <li>
                         <SidebarButton title={"Feed"} to={"/feed"} icon={<AiFillLayout />} />
                     </li>
@@ -75,6 +81,13 @@ export default function MobileSidebar() {
                         <SidebarButton title={"Library"} to={"/library"} icon={<IoLibrary />} />
                     </li>
                 </ul>
+                <div
+                    className="w-20 h-20 cursor-pointer text-[#f8c9d0] rounded-[20px] flex justify-center items-center flex-col my-[5px] mx-auto transition-all duration-300 ease-in-out hover:text-white"
+                    onClick={handleRemoveToken}
+                >
+                    <BiLogOut className="text-[32px]" />
+                    <p>Logout</p>
+                </div>
             </div>
 
             <div className={`w-[100vw] h-[100vh] bg-[#111827cc] ${isOpen ? "" : "hidden"}`}></div>
