@@ -27,7 +27,9 @@ export default function Sidebar({ userName, image }) {
                     alt="profile-image"
                     className="h-[50px] w-[50px] rounded-[50px] mt-7 mb-2"
                 />
-                <p className="self-center text-[#e5e7eb] w-full text-center text-sm font-Merienda">{`Chào ${userName}`}</p>
+                <p className="self-center text-[#e5e7eb] w-full text-center text-sm font-Merienda">
+                    {userName ? `Chào ${userName}` : <span>Đăng nhập</span>}
+                </p>
             </div>
 
             <div>

@@ -52,7 +52,7 @@ export default function Home() {
                 <div className="w-full flex">
                     <Header />
                     <Routes>
-                        <Route path="/library" element={<Library />}></Route>
+                        <Route path="/library" element={<Library userName={userName} />}></Route>
                         <Route path="/feed" element={<Feed />}></Route>
                         <Route path="/player" element={<Player />}></Route>
                         <Route path="/trending" element={<Trending />}></Route>
