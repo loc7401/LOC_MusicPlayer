@@ -28,7 +28,7 @@ export default function Sidebar({ userName, image }) {
                         <span className="font-Merienda">{`Chào ${userName}`}</span>
                     ) : (
                         <span
-                            className="text-black bg-[#1abc54] p-2 hover:bg-[#3be477] font-semibold rounded-lg block mt-1"
+                            className="text-black bg-[#1abc54] p-2 hover:bg-[#3be477] font-semibold rounded-lg block mt-1 cursor-pointer"
                             onClick={handleRemoveToken}
                         >
                             Đăng nhập
@@ -46,7 +46,10 @@ export default function Sidebar({ userName, image }) {
             </div>
             {/* <SidebarButton title={"Logout"} to={"/"} icon={<BiLogOut />} /> */}
             <div
-                className="w-20 h-20 cursor-pointer text-[#f8c9d0] rounded-[20px] flex justify-center items-center flex-col my-[5px] mx-auto transition-all duration-300 ease-in-out hover:text-white"
+                className={`w-20 h-20 cursor-pointer text-[#f8c9d0] rounded-[20px] ${
+                    userName ? "flex" : "hidden"
+                }  justify-center items-center 
+                    flex-col my-[5px] mx-auto transition-all duration-300 ease-in-out hover:text-white`}
                 onClick={handleRemoveToken}
             >
                 <BiLogOut className="text-[32px]" />

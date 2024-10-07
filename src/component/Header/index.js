@@ -1,12 +1,12 @@
 import { useLocation } from "react-router-dom";
 
-function Header() {
+function Header({ userName }) {
     const currentLocation = useLocation();
 
     return (
         <div
             className={`${
-                currentLocation.pathname === "/player" && window.innerWidth <= 500
+                currentLocation.pathname === "/player" && window.innerWidth <= 500 && userName
                     ? "hidden"
                     : "flex"
             } fixed w-full md:py-2 py-3 max-md:flex-row-reverse max-md:pl-12 flex-row justify-center items-center`}

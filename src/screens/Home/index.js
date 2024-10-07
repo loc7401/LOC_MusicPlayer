@@ -55,7 +55,7 @@ export default function Home() {
                 <Sidebar userName={userName} image={image} />
                 <MobileSidebar userName={userName} image={image} />
                 <div className="w-full flex">
-                    <Header />
+                    <Header userName={userName} />
                     {!userName ? (
                         <div className="m-auto flex flex-col items-center">
                             <img
