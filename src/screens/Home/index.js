@@ -42,22 +42,46 @@ export default function Home() {
         });
     }, []);
 
+    const handleRemoveToken = () => {
+        localStorage.removeItem("token");
+        window.location.reload();
+    };
+
     return !token ? (
         <Login />
     ) : (
         <Router>
             <div className="md:h-screen h-screen w-screen bg-[#6870ff45] rounded-[30px] flex">
                 <Sidebar userName={userName} image={image} />
-                <MobileSidebar userName={userName} />
+                <MobileSidebar userName={userName} image={image} />
                 <div className="w-full flex">
                     <Header />
-                    <Routes>
-                        <Route path="/library" element={<Library userName={userName} />}></Route>
-                        <Route path="/feed" element={<Feed />}></Route>
-                        <Route path="/player" element={<Player />}></Route>
-                        <Route path="/trending" element={<Trending />}></Route>
-                        <Route path="/favorites" element={<Favorites />}></Route>
-                    </Routes>
+                    {!userName ? (
+                        <div className="m-auto flex flex-col items-center">
+                            <img
+                                className="w-1/2 mb-5 "
+                                src="https://i.imgur.com/Tx2OoNE.png"
+                                alt="logo"
+                            ></img>
+                            <button
+                                className="text-black text-l bg-white px-8 py-3 rounded-3xl font-semibold hover:bg-[#3be477] hover:scale-105"
+                                onClick={handleRemoveToken}
+                            >
+                                Login
+                            </button>
+                        </div>
+                    ) : (
+                        <Routes>
+                            <Route
+                                path="/library"
+                                element={<Library userName={userName} />}
+                            ></Route>
+                            <Route path="/feed" element={<Feed />}></Route>
+                            <Route path="/player" element={<Player />}></Route>
+                            <Route path="/trending" element={<Trending />}></Route>
+                            <Route path="/favorites" element={<Favorites />}></Route>
+                        </Routes>
+                    )}
                 </div>
             </div>
         </Router>

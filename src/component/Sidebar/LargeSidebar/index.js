@@ -1,7 +1,5 @@
 import React, { useEffect, useState } from "react";
 import SidebarButton from "../../SidebarBtn";
-import styles from "./Sidebar.module.scss";
-import classNames from "classnames/bind";
 import { IconContext } from "react-icons";
 
 import { AiFillLayout } from "react-icons/ai";
@@ -10,8 +8,6 @@ import { AiFillCaretRight } from "react-icons/ai";
 import { AiFillHeart } from "react-icons/ai";
 import { IoLibrary } from "react-icons/io5";
 import { BiLogOut } from "react-icons/bi";
-
-const cx = classNames.bind(styles);
 
 export default function Sidebar({ userName, image }) {
     const handleRemoveToken = () => {
@@ -27,8 +23,17 @@ export default function Sidebar({ userName, image }) {
                     alt="profile-image"
                     className="h-[50px] w-[50px] rounded-[50px] mt-7 mb-2"
                 />
-                <p className="self-center text-[#e5e7eb] w-full text-center text-sm font-Merienda">
-                    {userName ? `Chào ${userName}` : <span>Đăng nhập</span>}
+                <p className="self-center text-[#e5e7eb] text-center text-sm ">
+                    {userName ? (
+                        <span className="font-Merienda">{`Chào ${userName}`}</span>
+                    ) : (
+                        <span
+                            className="text-black bg-[#1abc54] p-2 hover:bg-[#3be477] font-semibold rounded-lg block mt-1"
+                            onClick={handleRemoveToken}
+                        >
+                            Đăng nhập
+                        </span>
+                    )}
                 </p>
             </div>
 

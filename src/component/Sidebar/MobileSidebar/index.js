@@ -8,7 +8,7 @@ import { IoLibrary } from "react-icons/io5";
 import { BiLogOut } from "react-icons/bi";
 // import apiClient from "../../../spotify";
 
-export default function MobileSidebar({ userName }) {
+export default function MobileSidebar({ userName, image }) {
     const [isOpen, setIsOpen] = useState();
     const sidebarRef = useRef(null);
 
@@ -56,7 +56,25 @@ export default function MobileSidebar({ userName }) {
                 }`}
             >
                 <ul className="space-y-2 font-medium" onClick={closeSidebar}>
-                    <p className="self-center text-[#e5e7eb] mb-3 w-full text-center text-sm font-Merienda">{`Chào ${userName}`}</p>
+                    <div className="w-full flex flex-col items-center mb-5">
+                        <img
+                            src={image}
+                            alt="profile-image"
+                            className="h-[50px] w-[50px] rounded-[50px] mt-2 mb-2"
+                        />
+                        <p className="self-center text-[#e5e7eb] w-full text-center text-sm ">
+                            {userName ? (
+                                <span className="font-Merienda">{`Chào ${userName}`}</span>
+                            ) : (
+                                <span
+                                    className="text-black bg-[#1abc54] p-2 hover:bg-[#3be477] font-semibold rounded-lg block mt-1"
+                                    onClick={handleRemoveToken}
+                                >
+                                    Đăng nhập
+                                </span>
+                            )}
+                        </p>
+                    </div>
                     <li>
                         <SidebarButton title={"Feed"} to={"/feed"} icon={<AiFillLayout />} />
                     </li>
@@ -82,7 +100,10 @@ export default function MobileSidebar({ userName }) {
                     </li>
                 </ul>
                 <div
-                    className="w-20 h-20 cursor-pointer text-[#f8c9d0] rounded-[20px] flex justify-center items-center flex-col my-[5px] mx-auto transition-all duration-300 ease-in-out hover:text-white"
+                    className={`w-20 h-20 cursor-pointer text-[#f8c9d0] rounded-[20px] ${
+                        userName ? "flex" : "hidden"
+                    }  justify-center items-center 
+                        flex-col my-[5px] mx-auto transition-all duration-300 ease-in-out hover:text-white`}
                     onClick={handleRemoveToken}
                 >
                     <BiLogOut className="text-[32px]" />
