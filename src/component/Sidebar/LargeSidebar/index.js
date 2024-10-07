@@ -35,15 +35,16 @@ export default function Sidebar({ userName, image }) {
                         </span>
                     )}
                 </p>
+
+                <div className="mt-10">
+                    <SidebarButton title={"Feed"} to={"/feed"} icon={<AiFillLayout />} />
+                    <SidebarButton title={"Trending"} to={"/trending"} icon={<AiFillFire />} />
+                    <SidebarButton title={"Player"} to={"/player"} icon={<AiFillCaretRight />} />
+                    <SidebarButton title={"Favorites"} to={"/favorites"} icon={<AiFillHeart />} />
+                    <SidebarButton title={"Library"} to={"/library"} icon={<IoLibrary />} />
+                </div>
             </div>
 
-            <div>
-                <SidebarButton title={"Feed"} to={"/feed"} icon={<AiFillLayout />} />
-                <SidebarButton title={"Trending"} to={"/trending"} icon={<AiFillFire />} />
-                <SidebarButton title={"Player"} to={"/player"} icon={<AiFillCaretRight />} />
-                <SidebarButton title={"Favorites"} to={"/favorites"} icon={<AiFillHeart />} />
-                <SidebarButton title={"Library"} to={"/library"} icon={<IoLibrary />} />
-            </div>
             {/* <SidebarButton title={"Logout"} to={"/"} icon={<BiLogOut />} /> */}
             <div
                 className={`w-20 h-20 cursor-pointer text-[#f8c9d0] rounded-[20px] flex justify-center items-center 
