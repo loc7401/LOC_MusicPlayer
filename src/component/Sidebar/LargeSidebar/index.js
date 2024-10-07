@@ -46,10 +46,10 @@ export default function Sidebar({ userName, image }) {
             </div>
             {/* <SidebarButton title={"Logout"} to={"/"} icon={<BiLogOut />} /> */}
             <div
-                className={`w-20 h-20 cursor-pointer text-[#f8c9d0] rounded-[20px] ${
+                className={`w-20 h-20 cursor-pointer text-[#f8c9d0] rounded-[20px] flex justify-center items-center 
+                flex-col my-[5px] mx-auto transition-all duration-300 ease-in-out hover:text-white ${
                     userName ? "flex" : "hidden"
-                }  justify-center items-center 
-                    flex-col my-[5px] mx-auto transition-all duration-300 ease-in-out hover:text-white`}
+                }`}
                 onClick={handleRemoveToken}
             >
                 <BiLogOut className="text-[32px]" />
