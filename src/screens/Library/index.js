@@ -4,14 +4,39 @@ import { AiFillPlayCircle } from "react-icons/ai";
 import { IconContext } from "react-icons";
 import { useNavigate } from "react-router-dom";
 
-export default function Library({ userName }) {
+export default function Library({ userName, token }) {
     const [playLists, setPlayLists] = useState(null);
+    const [artists, setArtists] = useState(null);
+    const [topArtists, setTopArtists] = useState(null);
 
     useEffect(() => {
-        APIKit.get("me/playlists").then((response) => {
-            setPlayLists(response.data.items);
-        });
-    }, []);
+        if (token) {
+            APIKit.get("me/playlists")
+                .then((response) => {
+                    setPlayLists(response.data.items);
+                })
+                .catch((error) => {
+                    console.error("Lỗi khi lấy playlist:", error);
+                });
+            APIKit.get("me/following?type=artist&limit=20")
+                .then((response) => {
+                    setArtists(response.data.artists.items);
+                    console.log("Nghệ sĩ theo dõi:", response.data.artists.items);
+                })
+                .catch((error) => {
+                    console.error("Lỗi khi lấy nghệ sĩ theo dõi:", error);
+                });
+
+            APIKit.get("me/top/artists?limit=20")
+                .then((response) => {
+                    setTopArtists(response.data.items);
+                    console.log("Nghệ sĩ top:", response.data.items);
+                })
+                .catch((error) => {
+                    console.error("Lỗi khi lấy nghệ sĩ top:", error);
+                });
+        }
+    }, [token]);
 
     const navigate = useNavigate();
 

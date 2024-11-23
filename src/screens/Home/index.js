@@ -5,7 +5,7 @@ import Feed from "../Feed";
 import Library from "../Library";
 import Player from "../Player";
 import Trending from "../Trending";
-import Favorites from "../Favorites";
+import Favorites from "../Artists";
 import Sidebar from "../../component/Sidebar/LargeSidebar";
 import MobileSidebar from "../../component/Sidebar/MobileSidebar";
 import Login from "../Auth/login";
@@ -16,7 +16,7 @@ import apiClient from "../../spotify";
 export default function Home() {
     const [token, setToken] = useState("");
     const [userName, setUserName] = useState("");
-    const [image, setImage] = useState("https://i.imgur.com/PDcUbJR.jpg");
+    const [image, setImage] = useState("https://i.imgur.com/4GOMOrd.png");
 
     useEffect(() => {
         const token = window.localStorage.getItem("token");
@@ -27,6 +27,8 @@ export default function Home() {
             window.localStorage.setItem("token", _token);
             setToken(_token);
             setClientToken(_token);
+            window.location.hash = ""; // Xóa hash khỏi URL
+            window.location.reload();
         } else {
             setToken(token);
             setClientToken(token);
@@ -74,12 +76,12 @@ export default function Home() {
                         <Routes>
                             <Route
                                 path="/library"
-                                element={<Library userName={userName} />}
+                                element={<Library userName={userName} token={token} />}
                             ></Route>
                             <Route path="/feed" element={<Feed />}></Route>
                             <Route path="/player" element={<Player />}></Route>
                             <Route path="/trending" element={<Trending />}></Route>
-                            <Route path="/favorites" element={<Favorites />}></Route>
+                            <Route path="/artists" element={<Favorites />}></Route>
                         </Routes>
                     )}
                 </div>

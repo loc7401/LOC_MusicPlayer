@@ -1,6 +1,4 @@
-import React, { useEffect, useState } from "react";
 import SidebarButton from "../../SidebarBtn";
-import { IconContext } from "react-icons";
 
 import { AiFillLayout } from "react-icons/ai";
 import { AiFillFire } from "react-icons/ai";
@@ -24,23 +22,14 @@ export default function Sidebar({ userName, image }) {
                     className="h-[50px] w-[50px] rounded-[50px] mt-7 mb-2"
                 />
                 <p className="self-center text-[#e5e7eb] text-center text-sm ">
-                    {userName ? (
-                        <span className="font-Merienda">{`Chào ${userName}`}</span>
-                    ) : (
-                        <span
-                            className="text-black bg-[#1abc54] p-2 hover:bg-[#3be477] font-semibold rounded-lg block mt-1 cursor-pointer"
-                            onClick={handleRemoveToken}
-                        >
-                            Đăng nhập
-                        </span>
-                    )}
+                    {userName && <span className="font-Merienda">{`Chào ${userName}`}</span>}
                 </p>
 
                 <div className="mt-10">
                     <SidebarButton title={"Feed"} to={"/feed"} icon={<AiFillLayout />} />
                     <SidebarButton title={"Trending"} to={"/trending"} icon={<AiFillFire />} />
                     <SidebarButton title={"Player"} to={"/player"} icon={<AiFillCaretRight />} />
-                    <SidebarButton title={"Favorites"} to={"/favorites"} icon={<AiFillHeart />} />
+                    <SidebarButton title={"Artists"} to={"/artists"} icon={<AiFillHeart />} />
                     <SidebarButton title={"Library"} to={"/library"} icon={<IoLibrary />} />
                 </div>
             </div>

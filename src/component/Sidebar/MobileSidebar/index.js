@@ -52,7 +52,7 @@ export default function MobileSidebar({ userName, image }) {
             <div
                 ref={sidebarRef}
                 className={`bg-[#1c1e45] dark:bg-gray-800 h-[100vh] flex flex-col justify-between fixed left-[-250px] z-[99999] p-4 transition-all duration-300 ease-in-out text-white ${
-                    isOpen ? "left-[0px]" : ""
+                    isOpen && "left-[0px]"
                 }`}
             >
                 <ul className="space-y-2 font-medium" onClick={closeSidebar}>
@@ -63,15 +63,8 @@ export default function MobileSidebar({ userName, image }) {
                             className="h-[50px] w-[50px] rounded-[50px] mt-2 mb-2"
                         />
                         <p className="self-center text-[#e5e7eb] w-full text-center text-sm ">
-                            {userName ? (
+                            {userName && (
                                 <span className="font-Merienda">{`Chào ${userName}`}</span>
-                            ) : (
-                                <span
-                                    className="text-black bg-[#1abc54] p-2 hover:bg-[#3be477] font-semibold rounded-lg block mt-1"
-                                    onClick={handleRemoveToken}
-                                >
-                                    Đăng nhập
-                                </span>
                             )}
                         </p>
                     </div>
@@ -89,11 +82,7 @@ export default function MobileSidebar({ userName, image }) {
                         />
                     </li>
                     <li>
-                        <SidebarButton
-                            title={"Favorites"}
-                            to={"/favorites"}
-                            icon={<AiFillHeart />}
-                        />
+                        <SidebarButton title={"Artists"} to={"/artists"} icon={<AiFillHeart />} />
                     </li>
                     <li>
                         <SidebarButton title={"Library"} to={"/library"} icon={<IoLibrary />} />
@@ -111,7 +100,7 @@ export default function MobileSidebar({ userName, image }) {
                 </div>
             </div>
 
-            <div className={`w-[100vw] h-[100vh] bg-[#111827cc] ${isOpen ? "" : "hidden"}`}></div>
+            <div className={`w-[100vw] h-[100vh] bg-[#111827cc] ${!isOpen && "hidden"}`}></div>
         </div>
     );
 }
