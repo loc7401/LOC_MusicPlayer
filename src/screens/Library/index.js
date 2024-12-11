@@ -14,27 +14,28 @@ export default function Library({ userName, token }) {
             APIKit.get("me/playlists")
                 .then((response) => {
                     setPlayLists(response.data.items);
+                    console.log(response);
                 })
                 .catch((error) => {
                     console.error("Lỗi khi lấy playlist:", error);
                 });
-            APIKit.get("me/following?type=artist&limit=20")
-                .then((response) => {
-                    setArtists(response.data.artists.items);
-                    console.log("Nghệ sĩ theo dõi:", response.data.artists.items);
-                })
-                .catch((error) => {
-                    console.error("Lỗi khi lấy nghệ sĩ theo dõi:", error);
-                });
+            // APIKit.get("me/following?type=artist&limit=20")
+            //     .then((response) => {
+            //         setArtists(response.data.artists.items);
+            //         console.log("Nghệ sĩ theo dõi:", response.data.artists.items);
+            //     })
+            //     .catch((error) => {
+            //         console.error("Lỗi khi lấy nghệ sĩ theo dõi:", error);
+            //     });
 
-            APIKit.get("me/top/artists?limit=20")
-                .then((response) => {
-                    setTopArtists(response.data.items);
-                    console.log("Nghệ sĩ top:", response.data.items);
-                })
-                .catch((error) => {
-                    console.error("Lỗi khi lấy nghệ sĩ top:", error);
-                });
+            // APIKit.get("me/top/artists?limit=20")
+            //     .then((response) => {
+            //         setTopArtists(response.data.items);
+            //         console.log("Nghệ sĩ top:", response.data.items);
+            //     })
+            //     .catch((error) => {
+            //         console.error("Lỗi khi lấy nghệ sĩ top:", error);
+            //     });
         }
     }, [token]);
 
@@ -58,19 +59,19 @@ export default function Library({ userName, token }) {
                 <div className="w-full h-full mt-5 p-[3%] md:pt-0 grid grid-cols-2 md:grid-cols-4 xl:grid-cols-6 gap-4 overflow-y-auto ">
                     {playLists?.map((playlist, index) => (
                         <div
-                            key={playlist.id}
+                            key={playlist?.id}
                             className="playListCard relative w-full h-full rounded-[20px] border border-solid border-[#3645622e] p-3.5 mb-[2%] bg-playlistCard-gradient transition-all duration-200 ease-in-out cursor-pointer hover:scale-102  "
-                            onClick={() => handleClick(playlist.id, index)}
+                            onClick={() => handleClick(playlist?.id, index)}
                         >
                             <img
-                                src={playlist.images[0].url}
+                                src={playlist?.images[0]?.url}
                                 className="w-full rounded-xl"
                                 alt="playListImage"
                             ></img>
                             <div className="py-2.5">
-                                <p className=" font-semibold text-white">{playlist.name}</p>
+                                <p className=" font-semibold text-white">{playlist?.name}</p>
                                 <p className="text-[#c4d0e37c] text-sm">
-                                    {playlist.tracks.total} Bài hát
+                                    {playlist?.tracks?.total} Bài hát
                                 </p>
                             </div>
 

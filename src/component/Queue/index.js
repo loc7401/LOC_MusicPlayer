@@ -35,7 +35,7 @@ function Queue({ tracks, setCurrentIndex, currentIndex, index }) {
 
     useEffect(() => {
         const _currentPlaylist = localStorage.getItem("currentPlaylist");
-        if (_currentPlaylist) {
+        if (_currentPlaylist && typeof _currentPlaylist === "string") {
             setCurrentPlayList(JSON.parse(_currentPlaylist));
         }
     }, []);
