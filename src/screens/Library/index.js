@@ -60,7 +60,7 @@ export default function Library({ userName, token }) {
                     {playLists?.map((playlist, index) => (
                         <div
                             key={playlist?.id}
-                            className="playListCard relative w-full h-full rounded-[20px] border border-solid border-[#3645622e] p-3.5 mb-[2%] bg-playlistCard-gradient transition-all duration-200 ease-in-out cursor-pointer hover:scale-102  "
+                            className=" relative w-full rounded-[20px] border border-solid border-[#3645622e] px-3.5 mb-[2%] bg-playlistCard-gradient transition-all duration-200 ease-in-out cursor-pointer hover:scale-102  "
                             onClick={() => handleClick(playlist?.id, index)}
                         >
                             <img
@@ -75,11 +75,11 @@ export default function Library({ userName, token }) {
                                 </p>
                             </div>
 
-                            <div className="playlist-fade absolute opacity-0 right-0 bottom-0 w-full h-[24%] rounded-2xl bg-playlistFade-gradient flex items-end justify-end p-[8%] transition-all duration-500 ease">
+                            {/* <div className="playlist-fade absolute opacity-0 right-0 bottom-0 w-full h-[24%] rounded-2xl bg-playlistFade-gradient flex items-end justify-end p-[8%] transition-all duration-500 ease">
                                 <IconContext.Provider value={{ size: "50px", color: "E99D72" }}>
                                     <AiFillPlayCircle />
                                 </IconContext.Provider>
-                            </div>
+                            </div> */}
                         </div>
                     ))}
                 </div>
